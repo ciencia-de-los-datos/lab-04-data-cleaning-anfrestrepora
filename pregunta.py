@@ -9,7 +9,7 @@ correctamente. Tenga en cuenta datos faltantes y duplicados.
 import pandas as pd
 
 
-def clean_data(df):
+def clean_data():
 
     df = pd.read_csv("solicitudes_credito.csv", sep=";", index_col=0) # El index_col=0 permite que no se genere una columna adicional en el df xD
         # Eliminar filas con datos faltantes
@@ -27,15 +27,15 @@ def clean_data(df):
     df['monto_del_credito'] = df['monto_del_credito'].astype(float)
     # Eliminar filas duplicadas
     df = df.drop_duplicates()
+
+    
     return df
 
 
-# Cargar el DataFrame desde el archivo CSV
-file_path = 'solicitudes_credito.csv'
-df = pd.read_csv(file_path, sep=';')
 # Limpiar el DataFrame
-df_cleaned = clean_data(df)
-# Mostrar el DataFrame limpio
+df_cleaned = clean_data()
 print(df_cleaned)
+# Mostrar el DataFrame limpio
+#print(df_cleaned)
 # Guardar el DataFrame limpio en un nuevo archivo CSV
 df_cleaned.to_csv('datos_limpios.csv', index=False)
