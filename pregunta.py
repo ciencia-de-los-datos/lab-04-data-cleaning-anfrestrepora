@@ -22,7 +22,7 @@ def clean_data(df):
     df=df.apply(lambda x: x.str.replace("-", " "))
     df=df.apply(lambda x: x.str.lower())
     # Convertir la columna 'fecha_de_beneficio' al formato de fecha adecuado
-    df['fecha_de_beneficio'] = pd.to_datetime(df['fecha_de_beneficio'], errors='coerce')
+    df['fecha_de_beneficio'] = pd.to_datetime(df['fecha_de_beneficio'], dayfirst = True, format='mixed')
     # Limpiar los valores de la columna 'monto_del_credito'
     df['monto_del_credito'] = df['monto_del_credito'].astype(float)
     # Eliminar filas duplicadas
